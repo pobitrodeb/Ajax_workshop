@@ -18,6 +18,7 @@
     <section class="py-3">
       <div class="container">
         <div id="output"></div>
+        <div class="btn btn-primary" id="outputNew"> Click </div>
       </div>
     </section>
     <script
@@ -26,27 +27,27 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      var ajax = new XMLHttpRequest();
-      ajax.onreadystatechange = function () {
-        // console.log("stated changed", ajax.readyState, ajax.status);
-        if (ajax.readyState == 4 && ajax.status == 200) 
-        {
-          // ready stated mean API connection peyeche ki na jodi peye thake and status data successfully hoy tahole
-          // console.log(ajax.responseText);
-          // ajax er modhe responseText data dhore rakhe . ajax er modhe joto request se sob gulo sekhane joma hoy
-          var getData = JSON.parse(ajax.responseText);
-          // console.log(getData);
-        }
-      };
 
-      ajax.onprogress = function(){
-        console.log('Progress', ajax.readyState, ajax.status);
+      var output = document.getElementById('output'); 
+      var btnClick = document.getElementById('outputNew'); 
+      btnClick.addEventListener("click", function(){
+        loadAjax();
+      })
+
+      function loadAjax()
+      {
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function(){
+          if(ajax.readyState == 4 && ajax.status == 200){
+            var data = JSON.parse(ajax.responseText); 
+            console.log(data);
+          }
+        }
+
+        ajax.open('GET', 'https://randomuser.me/api/', true); 
+        ajax.send();
       }
-      ajax.onload = function(){
-        console.log('Done', ajax.readyState, ajax.status);
-      }
-      ajax.open("GET", "https://randomuser.me/api/", true);
-      ajax.send();
+
     </script>
   </body>
 </html>
