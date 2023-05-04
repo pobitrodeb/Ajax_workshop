@@ -17,28 +17,36 @@
     </h2>
     <section class="py-3">
       <div class="container">
-        <div id="output">
-
-        </div>
+        <div id="output"></div>
       </div>
     </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous">
-    </script>
+      crossorigin="anonymous"
+    ></script>
     <script>
-      var ajax = new XMLHttpRequest(); 
-          ajax.onreadystatechange = function(){
-              // console.log("stated changed", ajax.readyState, ajax.status);
-              if(ajax.readyState == 4 && ajax.status == 200){     
-                // ready stated mean API connection peyeche ki na jodi peye thake and status data successfully hoy tahole
-                  console.log(ajax.responseText); 
-                  // ajax er modhe responseText data dhore rakhe . ajax er modhe joto request se sob gulo sekhane joma hoy 
-              }
-          }
-          ajax.open('GET', "https://randomuser.me/api/", true);
-          ajax.send();
+      var ajax = new XMLHttpRequest();
+      ajax.onreadystatechange = function () {
+        // console.log("stated changed", ajax.readyState, ajax.status);
+        if (ajax.readyState == 4 && ajax.status == 200) 
+        {
+          // ready stated mean API connection peyeche ki na jodi peye thake and status data successfully hoy tahole
+          // console.log(ajax.responseText);
+          // ajax er modhe responseText data dhore rakhe . ajax er modhe joto request se sob gulo sekhane joma hoy
+          var getData = JSON.parse(ajax.responseText);
+          // console.log(getData);
+        }
+      };
+
+      ajax.onprogress = function(){
+        console.log('Progress', ajax.readyState, ajax.status);
+      }
+      ajax.onload = function(){
+        console.log('Done', ajax.readyState, ajax.status);
+      }
+      ajax.open("GET", "https://randomuser.me/api/", true);
+      ajax.send();
     </script>
   </body>
 </html>
