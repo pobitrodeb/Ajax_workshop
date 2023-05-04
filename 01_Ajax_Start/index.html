@@ -29,6 +29,14 @@
     </script>
     <script>
       var ajax = new XMLHttpRequest(); 
+          ajax.onreadystatechange = function(){
+              // console.log("stated changed", ajax.readyState, ajax.status);
+              if(ajax.readyState == 4 && ajax.status == 200){     
+                // ready stated mean API connection peyeche ki na jodi peye thake and status data successfully hoy tahole
+                  console.log(ajax.responseText); 
+                  // ajax er modhe responseText data dhore rakhe . ajax er modhe joto request se sob gulo sekhane joma hoy 
+              }
+          }
           ajax.open('GET', "https://randomuser.me/api/", true);
           ajax.send();
     </script>
