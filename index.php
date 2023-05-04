@@ -9,7 +9,7 @@
   <body>
    <section>
     <div class="container">
-        <h3>Pobitro</h3>
+        <h3>JSON_AJAX_API_Course by udemy </h3>
         
     </div>
    </section>
