@@ -39,8 +39,11 @@
         var ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function(){
           if(ajax.readyState == 4 && ajax.status == 200){
-            var data = JSON.parse(ajax.responseText); 
-            console.log(data);
+            var jsonData = JSON.parse(ajax.responseText); 
+            var data = jsonData.results[0];
+
+            var message = data.name.first + ' ' + data.name.last + '<br> <img src="'+data.picture.large+'" />'; 
+            output.innerHTML = message;
           }
         }
 
