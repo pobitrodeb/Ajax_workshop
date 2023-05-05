@@ -41,10 +41,12 @@
             console.log(response.headers.get("Content-Type"));
             console.log(response.headers.get("Date"));
             console.log(response.type);
-            return response.text();
+            return response.json();
           })
-          .then(function (text) {
-            console.log(text);
+          .then(function (json) {
+            console.log(json);
+            let getData = '<div> <img src="'+json.icon_image+'"> '+json.value+' </div>'; 
+            document.querySelector('#output').innerHTML = getData;
           })
           .catch(function (error) {
             console.log(error);
