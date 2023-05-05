@@ -20,6 +20,8 @@
         <div id="output"></div>
         <div class="btn btn-primary" id="outputNew"> Click </div>
         <div class="btn btn-primary" id="outputText"> Click For Text</div>
+        <div class="btn btn-primary" id="outputJoke"> Click For Get Joke </div>
+        <img src="" alt="">
 
       </div>
     </section>
@@ -71,6 +73,28 @@
         }
         xhr.open("GET", "simple.txt", true)
         xhr.send();
+      }
+
+      //outputJoke 
+      var joker = document.querySelector("#outputJoke");
+      joker.addEventListener('click', loadJoke);
+      function loadJoke(){
+        var jokeAjax = new XMLHttpRequest(); 
+        jokeAjax.onreadystatechange = function()
+        {
+          if(jokeAjax.readyState == 4 && jokeAjax.status == 200)
+          {
+           var getJokeJsonData = JSON.parse(jokeAjax.responseText);
+          //  var getJoke = getJokeJsonData.value;
+           var getJoke = '<div><img src="'+getJokeJsonData.icon_url+'">'+getJokeJsonData.value+'</div>'
+                  
+          document.querySelector('#output').innerHTML = getJoke;
+          
+          } 
+        }
+
+        jokeAjax.open ('GET', 'https://api.chucknorris.io/jokes/random', true);
+        jokeAjax.send()
       }
 
     </script>
