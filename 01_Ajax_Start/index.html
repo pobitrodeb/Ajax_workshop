@@ -19,6 +19,8 @@
       <div class="container">
         <div id="output"></div>
         <div class="btn btn-primary" id="outputNew"> Click </div>
+        <div class="btn btn-primary" id="outputText"> Click For Text</div>
+
       </div>
     </section>
     <script
@@ -30,10 +32,12 @@
 
       var output = document.getElementById('output'); 
       var btnClick = document.getElementById('outputNew'); 
+      var btnClickText =document.getElementById('outputText'); 
       btnClick.addEventListener("click", function(){
         loadAjax();
       })
 
+      //Image 
       function loadAjax()
       {
         var ajax = new XMLHttpRequest();
@@ -49,6 +53,24 @@
 
         ajax.open('GET', 'https://randomuser.me/api/', true); 
         ajax.send();
+      }
+
+
+      //Text 
+      btnClickText.addEventListener("click", function(){
+        loadText();
+      })
+
+      function loadText(){
+        var xhr = new XMLHttpRequest(); 
+        xhr.onreadystatechange = function()
+        {
+          if(xhr.readyState == 4 && xhr.status == 200){
+            output.innerHTML = xhr.responseText;
+          }
+        }
+        xhr.open("GET", "simple.txt", true)
+        xhr.send();
       }
 
     </script>
