@@ -36,25 +36,9 @@
       function getJoke() {
         var url = "https://api.chucknorris.io/jokes/random";
         fetch("https://api.chucknorris.io/jokes/random")
-          .then(function (response) {
-            // console.log(response.text());
-            console.log(response.headers.get("Content-Type"));
-            console.log(response.headers.get("Date"));
-            console.log(response.type);
-            if(response.status == 200){
-              {console.log("Opps not connected" + response.status);}
-              return response.json();
-            }
-           
-          })
-          .then(function (json) {
-            console.log(json);
-            let getData = '<div> <img src="'+json.icon_image+'"> '+json.value+' </div>'; 
-            document.querySelector('#output').innerHTML = getData;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          .then(response => response.json())
+          .then(json => document.querySelector('#output').innerHTML = '<div> <img src="'+json.icon_image+'"> '+json.value+' </div>') 
+          .catch(error => console.log(error))
 
         // ajax.open('GET', 'https://api.chucknorris.io/jokes/random', true)
         // ajax.send();
