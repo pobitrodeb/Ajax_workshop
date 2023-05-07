@@ -36,12 +36,13 @@
       function getJoke() {
         var url = "https://api.chucknorris.io/jokes/random";
         fetch("https://api.chucknorris.io/jokes/random")
-          .then(response => response.json())
+          .then(resJson)
           .then(json => document.querySelector('#output').innerHTML = '<div> <img src="'+json.icon_image+'"> '+json.value+' </div>') 
           .catch(error => console.log(error))
 
-        // ajax.open('GET', 'https://api.chucknorris.io/jokes/random', true)
-        // ajax.send();
+         function resJson(response){
+          return response.json();
+         } 
       }
     </script>
   </body>
