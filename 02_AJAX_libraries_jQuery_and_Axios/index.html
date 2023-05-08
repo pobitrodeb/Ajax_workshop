@@ -19,7 +19,9 @@
     <section class="py-5">
         <div class="container">
             <div id="output"></div>
-            <div class="btn btn-primary" id="getData"> Get Data  </div>
+            <div>
+              <button class="btn btn-primary" id="clickMe"> Click Me </button>
+            </div>
         </div>
     </section>
    
@@ -30,28 +32,9 @@
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var output = document.getElementById('output'); 
-        var getDataAPI = document.getElementById('getData'); 
-       getDataAPI.addEventListener('click', function(){
-        loadAjax()
-       })
-       function loadAjax(){
-            var ajax = new XMLHttpRequest(); 
-            ajax.onreadystatechange = function(){
-
-              if(ajax.readyState == 4 && ajax.status == 200){
-                var jsonData = JSON.parse( ajax.responseText);
-                var data = jsonData.results[0];
-                console.log(data.name);
-                // var message = data.name.first + ' ' + data.name.last + '<br> <img src="'+data.picture.large+'" />'; 
-                // output.innerHTML = message;
-              }
-
-            }
-           ajax.open('GET', 'https://randomuser.me/api/', true);
-           ajax.send()
-
-       }
+          $("#clickMe").click(function(){
+            console.log('Congratulations');
+          })
     </script>
   </body>
 </html>
