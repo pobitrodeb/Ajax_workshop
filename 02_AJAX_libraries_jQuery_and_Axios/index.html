@@ -35,7 +35,14 @@
         $("#clickMe").click(webData)
 
           function webData(){
-             console.log('Congratulations');
+             $.ajax({
+              url: 'https://jsonplaceholder.typicode.com/posts/1'
+             }).done(output)
+          }
+
+          function output(data)
+          {
+            console.log(data);
           }
     </script>
   </body>
