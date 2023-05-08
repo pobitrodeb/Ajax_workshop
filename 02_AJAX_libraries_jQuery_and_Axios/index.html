@@ -39,12 +39,20 @@
               method: 'GET',
               url: 'https://jsonplaceholder.typicode.com/posts/1', 
               dataType: 'json',  // dataType: 'text',
-             }).done(output)
+             })
+             .done(output)
+             .fail(function(){
+              console.log('Error!!');
+             })
           }
 
           function output(data)
           {
-            console.log(data);
+            // console.log(data.title);
+            $("#output").html(
+              '<h2>'+data.title+'</h2> <p>'+data.body+'</p>'
+             
+            )
           }
     </script>
   </body>
