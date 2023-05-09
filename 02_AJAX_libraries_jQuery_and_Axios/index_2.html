@@ -39,15 +39,16 @@
            
         }
         function success(data){
-          console.log(data);
+          // console.log(data);
           $.each(data, loopData)
+          var getData; 
           function loopData(k, v)
           {
-            console.log(k);
-            console.log(v);
+            getData+= 'Flight Number : '+v.flight_number+'<br>'
+            getData+= 'Flight Details : '+v.details+'<br>'
           }
 
-          $('#output').html(data[1].flight_number+'<br>'+ 'this is body : ' +data[1].details)
+          $('#output').html(getData)
         }
     </script>
   </body>
