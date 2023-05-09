@@ -46,9 +46,19 @@
       <script>
        $('#fullNameForm').submit(function(e){
         e.preventDefault()
-        var fist = $('input[name="firstName"]').val(); 
-        var last = $('input[name="lastName"]').val(); 
-        console.log(fist,last);
+       var myData = {
+        fistName:  $('input[name="firstName"]').val(),
+        lastName: $('input[name="lastName"]').val()
+       }
+        var url = 'http://s179017901.onlinehome.us/discoveryvip/';
+        $.post(url, myData)
+        .done(outputData)
+        
+        function outputData(data)
+        {
+          console.log(data);
+        }
+     
        })
       </script>
   </body>
