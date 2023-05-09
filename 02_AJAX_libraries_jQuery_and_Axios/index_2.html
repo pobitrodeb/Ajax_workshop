@@ -39,7 +39,14 @@
            
         }
         function success(data){
-          // console.log(data);
+          console.log(data);
+          $.each(data, loopData)
+          function loopData(k, v)
+          {
+            console.log(k);
+            console.log(v);
+          }
+
           $('#output').html(data[1].flight_number+'<br>'+ 'this is body : ' +data[1].details)
         }
     </script>
