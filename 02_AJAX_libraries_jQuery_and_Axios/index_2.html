@@ -34,21 +34,13 @@
     <script>
         $('#clickMe').click(apiData)
         function apiData(){
-            $.ajax({
-                method: 'GET',
-                url: 'https://jsonplaceholder.typicode.com/posts/1', 
-                success: success
-            })
-            // .done(apiDataOutput)
-            // .fail(function(){
-            //     console.log('Error!!');
-            // })
+          var  url = 'https://api.spacexdata.com/v5/launches/'
+          $.get(url, success)
+           
         }
-        function success(data, status, xhr){
+        function success(data){
           // console.log(data);
-          // console.log(status);
-          // console.log(xhr);
-          $('#output').html(data.title+'<br>'+ 'this is body ' + data.body)
+          $('#output').html(data[1].flight_number+'<br>'+ 'this is body : ' +data[1].details)
         }
     </script>
   </body>
