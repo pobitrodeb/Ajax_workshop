@@ -66,12 +66,12 @@
             url       :url, 
             type      :'post', 
             data      :myData,
-            success   : function(data){
-                console.log(data);
-            }
+            success   : getData
           })
 
-
+          function getData(data){
+            console.log(data);
+          }
        })
       </script>
   </body>
