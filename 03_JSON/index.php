@@ -19,9 +19,16 @@
     <section class="py-5">
         <div class="container">
             <?php
-         echo file_get_contents('programingLanguate.json'); 
-            
-         
+            $getJSONData = json_decode(file_get_contents('programingLanguate.json')); 
+            // $objData     = json_decode($getJSONData); 
+
+            // print_r($objData[0]);
+
+            foreach($getJSONData as $value){
+               echo '<li>'.$value->name.' '.$value->type. '</li>'; 
+             
+            }
+
             ?>
         </div>
     </section>
