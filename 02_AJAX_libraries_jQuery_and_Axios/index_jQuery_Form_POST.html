@@ -51,14 +51,27 @@
         lastName: $('input[name="lastName"]').val()
        }
         var url = 'http://s179017901.onlinehome.us/discoveryvip/';
-        $.post(url, myData)
-        .done(outputData)
+
+        // ===========jQuery formet
+        // $.post(url, myData)
+        // .done(outputData)
         
-        function outputData(data)
-        {
-          console.log(data);
-        }
-     
+        // function outputData(data)
+        // {
+        //   console.log(data);
+        // }
+
+        // =========== Ajax 
+          $.ajax({
+            url       :url, 
+            type      :'post', 
+            data      :myData,
+            success   : function(data){
+                console.log(data);
+            }
+          })
+
+
        })
       </script>
   </body>
