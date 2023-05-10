@@ -23,12 +23,13 @@
             // $objData     = json_decode($getJSONData); 
 
             // print_r($objData[0]);
-
+       
             foreach($getJSONData as $value){
                echo '<li>'.$value->name.' '.$value->type. '</li>'; 
-             
+               
             }
-
+            $getDataJson = file_get_contents('programingLanguate.json');
+          
             ?>
         </div>
     </section>
