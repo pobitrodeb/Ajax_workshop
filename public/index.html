@@ -38,7 +38,8 @@
                         if(xhr.readyState == 4)
                         {
                             // message.innerHTML = (xhr.response);
-                            message.innerHTML = JSON.stringify(xhr.response);
+                            message.innerHTML = JSON.stringify(xhr.response); // Oject convert to String
+                            console.log(JSON.parse(xhr.response)); // Valid JSON convert to object 
                         }
                     }
                 xhr.open(requestType, url, true); 
