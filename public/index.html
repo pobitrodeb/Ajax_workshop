@@ -16,7 +16,8 @@
             <div class="card-body">
                 <div id="message"></div>
                 <div id="">
-                    <a href="" id="load1" class="btnn btn-primary"> Click Here </a>
+                    <a href="" id="load1" class="btn btn-primary"> Click Here </a> <br> <br>
+                    <a href="" id="btn2" class="btn btn-primary">xhr post data to JSON </a>
                 </div>
             </div>
         </div>
@@ -26,9 +27,15 @@
     <script>
         var load1 = document.querySelector('#load1');
         var message = document.getElementById('message'); 
+        var btn = document.getElementById('btn2');
         load1.addEventListener('click', function(e){
             e.preventDefault();
-              makeRequest('  http://localhost:3000/posts', 'GET', {})
+              makeRequest('http://localhost:3000/posts', 'GET', {})
+        });
+
+        btn.addEventListener('click', function(e){
+            e.preventDefault(); 
+            makePostRequest ('http://localhost:3000/posts', 'POST', 'title=John&author=Jason');
         });
 
         function makeRequest(url, requestType,data ){
@@ -44,6 +51,19 @@
                     }
                 xhr.open(requestType, url, true); 
                 xhr.send(); 
+        }
+
+        function makePostRequest(url, requestType, data){
+            var postAjax = new XMLHttpRequest();
+            postAjax.onreadystatechange = function () {
+                if (postAjax.readyState == 4) {
+                    message.innerHTML = postAjax.response;
+                    console.log(JSON.parse(postAjax.response))
+                }
+            }
+            postAjax.open(requestType, url, true)
+            postAjax.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            postAjax.send(data)
         }
 
     </script>
